@@ -1,0 +1,56 @@
+body{
+	/*font-family: "Cylonic Crossdraft";*/
+	font-family: "Calibri";
+	font-weight: bolder !important;
+}
+
+/*#printMe{
+}
+*/
+th{
+	background-color: silver !important;
+}
+
+.table-responsive{
+	max-width: 100% !important;
+}
+
+table{
+	size: 4in !important;
+	width: 5.4in !important;
+	margin: 0 !important;
+	zoom: 100% !important;
+	/*line break*/
+    page-break-after: always;
+    page-break-inside: avoid;
+    break-inside: avoid;
+}
+
+tr{ 
+	page-break-inside:avoid; 
+	page-break-after:auto;
+	font-weight: bolder !important;
+}
+.border-print tr > th{
+	border-top: 1px dashed #000 !important;
+	border-bottom: 1px solid #000 !important;
+}
+
+.border-print tr > td{
+	border-top: 0 solid #fff !important;
+}
+
+th{
+	padding: 3px 12px !important;
+}
+td{
+	padding: 3px 12px !important;
+}
+
+tr:nth-child(19) > td{
+	padding-top: 0.8in !important;
+}
+
+small {
+	font-weight: bolder !important;
+}

@@ -1,0 +1,28 @@
+<?php
+
+namespace App;
+
+use Illuminate\Database\Eloquent\Model;
+use Spatie\Activitylog\Traits\LogsActivity;
+
+class Canteen_package extends Model
+{
+    use LogsActivity;
+    protected static $logAttributes = ['name'];
+    
+    public function setNameAttribute($value){
+   		return $this->attributes['name'] = ucfirst($value);
+   	}
+   	
+    protected $fillable = [
+        'name',
+        'slug',
+        'rate',
+        'days',
+        'created_by',
+        'is_active',
+        'date',
+        'date_np',
+        'time'
+    ];
+}
