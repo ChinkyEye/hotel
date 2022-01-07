@@ -240,12 +240,14 @@ class CheckInController extends Controller
 
     public function savedetail(Request $request)
     {
+        // dd($request);
         $current_date = date("Y-m-d");
         $current_time = date("H:i:s");
         $auth = Auth::user()->id;
         $bill_id = strtotime(date(("Y-m-d H:i:s")));
         $user_t_id = User::where('id',$request->id)->value('user_type_id');
-        $checkin_id = CheckIn::where('user_id',$request->id)->value('id');
+        $checkin_id = CheckIn::where('user_id',$request->id)->where('is_check_out','0')->value('id');
+        // dd($checkin_id);
         // dd($request,$user_t_id,$checkin_id);
         if($request->total != 0){
             $order_total = new Order_detail;
