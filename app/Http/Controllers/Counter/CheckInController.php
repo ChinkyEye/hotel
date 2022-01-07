@@ -65,6 +65,7 @@ class CheckInController extends Controller
         $checkin_id = $request->checkin_id;
         // dd($checkin_id);
         $user_id = CheckIn::where('id',$checkin_id)->value('user_id');
+        $check_out_date = CheckIn::where('user_id',$user_id)->value('check_out_date');
 
         $check_in_date = CheckIn::where('id',$checkin_id)->value('check_in_date');
         $check_out_date = CheckIn::where('id',$checkin_id)->value('check_out_date');
@@ -80,8 +81,12 @@ class CheckInController extends Controller
                 $array[] = $data->getRoom->price;
             }
         } 
-        $grand_total = Order_detail::where('customer_id',$user_id)->pluck('grand_total');
-        $tender = Order_detail::where('customer_id',$user_id)->pluck('tender');
+        $grand_total = Order_detail::where('customer_id',$user_id)
+                                    ->where('date','<=',$check_out_date)
+                                    ->pluck('grand_total');
+        $tender = Order_detail::where('customer_id',$user_id)
+                                ->where('date','<=',$check_out_date)
+                                ->pluck('tender');
 
         $arr_length = sizeof($grand_total) - 1;
         $minus_arr = [];
@@ -98,8 +103,10 @@ class CheckInController extends Controller
         $sum = array_sum($array) * $interval;
         $grand_sum = $sum + $remaining_total;  
 
+       
         $posts = Order_detail::where('customer_id',$user_id)
                                 ->where('receive_type','0')
+                                ->where('date','<=',$check_out_date)
                                 ->paginate(15);
         $response = [
            'pagination' => [
