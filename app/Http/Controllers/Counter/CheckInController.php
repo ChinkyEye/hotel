@@ -240,26 +240,27 @@ class CheckInController extends Controller
         $user_t_id = User::where('id',$request->id)->value('user_type_id');
         $checkin_id = CheckIn::where('user_id',$request->id)->value('id');
         // dd($request,$user_t_id,$checkin_id);
-
-        $order_total = new Order_detail;
-        $order_total->bill_id = $bill_id;
-        $order_total->billed_by = Auth::user()->id;
-        $order_total->total = '0';
-        $order_total->discount = '0';
-        $order_total->grand_total = '0';
-        $order_total->customer_id = $request->id;
-        $order_total->table_id = '1';
-        $order_total->usertype_id = $user_t_id;
-        $order_total->date = $current_date;
-        $order_total->date_np = $this->helper->date_np_con_parm($current_date);
-        $order_total->time = $current_time;
-        $order_total->received = $request->total;
-        $order_total->is_active = '1';
-        $order_total->is_confirmed = '1';
-        $order_total->bill_type = '2';
-        $order_total->receive_type = '1';
-        $order_total->created_by = $auth;
-        $order_total->save();
+        if($request->total != 0){
+            $order_total = new Order_detail;
+            $order_total->bill_id = $bill_id;
+            $order_total->billed_by = Auth::user()->id;
+            $order_total->total = '0';
+            $order_total->discount = '0';
+            $order_total->grand_total = '0';
+            $order_total->customer_id = $request->id;
+            // $order_total->table_id = '1';
+            $order_total->usertype_id = $user_t_id;
+            $order_total->date = $current_date;
+            $order_total->date_np = $this->helper->date_np_con_parm($current_date);
+            $order_total->time = $current_time;
+            $order_total->received = $request->total;
+            $order_total->is_active = '1';
+            $order_total->is_confirmed = '1';
+            $order_total->bill_type = '2';
+            $order_total->receive_type = '1';
+            $order_total->created_by = $auth;
+            $order_total->save();
+        }
         
         $checkins = CheckIn::findOrFail($checkin_id);
         $checkins->is_check_out = '1';
