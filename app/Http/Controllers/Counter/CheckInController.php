@@ -248,7 +248,7 @@ class CheckInController extends Controller
             $order_total->discount = '0';
             $order_total->grand_total = '0';
             $order_total->customer_id = $request->id;
-            // $order_total->table_id = '1';
+            $order_total->table_id = '1';
             $order_total->usertype_id = $user_t_id;
             $order_total->date = $current_date;
             $order_total->date_np = $this->helper->date_np_con_parm($current_date);
