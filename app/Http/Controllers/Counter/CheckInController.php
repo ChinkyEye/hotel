@@ -51,7 +51,8 @@ class CheckInController extends Controller
         $customerSelects = User::orderBy('id','DESC')
                                 ->where('is_active','1')
                                 ->where('user_type','0')
-                                ->where('user_type_id','10')
+                                ->where('type_id','2')
+                                // ->where('user_type_id','10')
                                 ->select('id','name','user_code')
                                 ->get();
         return response()->json([
