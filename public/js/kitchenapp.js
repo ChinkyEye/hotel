@@ -124168,7 +124168,7 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! F:\xampp\htdocs\hotel\resources\js\kitchenapp.js */"./resources/js/kitchenapp.js");
+module.exports = __webpack_require__(/*! C:\xampp\htdocs\hotel\resources\js\kitchenapp.js */"./resources/js/kitchenapp.js");
 
 
 /***/ })
