@@ -146,7 +146,6 @@
     computed:{
       allSelectFiscalYears(){
         var a = this.$store.getters.getSelectFiscalYear
-        consile.log(a);
         return a;
       },
     },

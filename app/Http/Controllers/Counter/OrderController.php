@@ -100,40 +100,7 @@ class OrderController extends Controller
         $order_total->billed_by = Auth::user()->id;
         $order_total->save();
 
-        $configure = Configure::where('is_active',1)->first();
-        // dd($configure->income_receiveamount,$configure);
-
-        if($configure->income_bill == 1){
-        
-
-          $incometopic = IncomeExpenseTopic::firstOrCreate([
-              'name' => 'Bill'
-          ], [
-              'name' => 'Bill',
-              'type' => '1',
-              'slug' => strtolower('Bill'),
-              'is_active' => '1',
-              'date' => date("Y-m-d"),
-              'date_np' => $this->helper->date_np_con(),
-              'time' => date("H:i:s"),
-              'created_by' => Auth::user()->id,
-          ]);
-          $incomeexpense_id = IncomeExpenseTopic::where('name','Bill')->value('id');
-
-
-          $incomeexpense = IncomeExpense::create([
-             'topic_id' => $incomeexpense_id,
-             'description' => 'Bill details',
-             'amount' => $total,
-             'iedate' => $this->helper->date_np_con(),
-             'type' => '1',
-             'is_active' => '1',
-             'date' => date("Y-m-d"),
-             'date_np' => $this->helper->date_np_con(),
-             'time' => date("H:i:s"),
-             'created_by' => Auth::user()->id,
-          ]);
-        }
+      
       
 
 
