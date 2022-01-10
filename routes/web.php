@@ -334,6 +334,12 @@ Route::group(["middleware" => 'manager'], function(){
 	//room
 	Route::resource('/manager/room','Manager\RoomController');
 
+	//bank balance
+	Route::resource('/manager/bankbalance','Manager\BankBalanceController');
+	Route::get('/manager/bankbalance/status/{id}/{status}', 'Manager\BankBalanceController@status');
+
+
+
 	// expense topic
 	Route::resource('/manager/expense/topic','Manager\ExpenseTopicController');
 	Route::get('/manager/expensetopicList', 'Manager\ExpenseTopicController@all_expensetopic_select');
@@ -434,6 +440,9 @@ Route::group(["middleware" => 'manager'], function(){
 	
 	Route::resource('/manager/report/daybook','Manager\Report\DaybookController');
 
+	Route::get('/manager/report/bankbalance','Manager\Report\BankBalanceReportController@index');
+	Route::get('/manager/report/bankbalance/export','Manager\Report\BankBalanceReportController@fileExport');
+
 	Route::get('/manager/report/items/export','Manager\Report\ItemsController@fileExport');
 	Route::resource('/manager/report/items','Manager\Report\ItemsController');
 
@@ -451,6 +460,8 @@ Route::group(["middleware" => 'manager'], function(){
 
 	Route::get('/manager/report/expensereport/export','Manager\Report\ExpenseReportController@fileExport');
 	Route::resource('/manager/report/expensereport','Manager\Report\ExpenseReportController');
+
+
 
 
 

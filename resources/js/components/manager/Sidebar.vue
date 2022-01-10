@@ -232,11 +232,19 @@
         </li>
       </ul>
     </li>
-      <li class="nav-item">
+    <li class="nav-item">
       <router-link to="/room" class="nav-link">
         <i class="nav-icon fas fa-tachometer-alt"></i>
         <p>
           Room
+        </p>
+      </router-link>
+    </li>
+    <li class="nav-item">
+      <router-link to="/bankbalance" class="nav-link">
+        <i class="nav-icon fas fa-landmark"></i>
+        <p>
+          Bank Balance
         </p>
       </router-link>
     </li>

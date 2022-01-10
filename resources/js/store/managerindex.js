@@ -69,6 +69,8 @@ export default{
 		expensetopic:[],
 		expense:[],
 		room:[],
+		bankbalance:[],
+		bankbalancereport:[],
 	},
 	getters:{
 		getDashboard(state){
@@ -279,6 +281,12 @@ export default{
 		},
 		getRoom(state){
 			return state.room
+		},
+		getBankBalance(state){
+			return state.bankbalance
+		},
+		getBankBalanceReport(state){
+			return state.bankbalancereport
 		}
 	},
 	actions:{
@@ -705,6 +713,20 @@ export default{
 				.then((response)=>{
 					context.commit('rooms', [response.data.rooms.data,response.data.pagination])
 				})
+		},
+		allBankBalance(context, params){
+			axios.get("/manager/bankbalance/"+"?page="+params[0])
+				.then((response)=>{
+					context.commit('bankbalances', [response.data.bankbalances.data,response.data.pagination])
+				})
+		},
+		allBankBalanceReport(context, params){
+			axios.get("/manager/report/bankbalance/?page="+params[0]+"&date1="+params[1]+"&date2="+params[2])
+				.then((response)=>{
+					context.commit('bankbalancereports', [response.data,
+														response.data.pagination,
+														response.data.total])
+				})
 		}
 	},
 	mutations:{
@@ -916,6 +938,12 @@ export default{
 		},
 		rooms(state, data){
 			return state.room = data
+		},
+		bankbalances(state, data){
+			return state.bankbalance = data
+		},
+		bankbalancereports(state, data){
+			return state.bankbalancereport = data
 		}
 	}
 }

@@ -133,6 +133,11 @@ import Room from './components/manager/room/List.vue'
 import RoomNew from './components/manager/room/New.vue'
 import RoomEdit from './components/manager/room/Edit.vue'
 
+//bankbaance
+import BankBalance from './components/manager/bankbalance/List.vue'
+import BankBalanceNew from './components/manager/bankbalance/New.vue'
+import BankBalanceEdit from './components/manager/bankbalance/Edit.vue'
+
 // expense topic
 import ExpenseTopic from './components/manager/expensetopic/List.vue'
 import ExpenseTopicNew from './components/manager/expensetopic/New.vue'
@@ -169,6 +174,8 @@ import Daybook from './components/manager/report/daybook/List.vue'
 import IncomeReport from './components/manager/report/incomereport/List.vue'
 //expense report
 import ExpenseReport from './components/manager/report/expensereport/List.vue'
+//bankbalnce report
+import BankBalanceReport from './components/manager/report/bankbalance/List.vue'
 // overall detail
 import Overall from './components/manager/report/overall/List.vue'
 
@@ -541,6 +548,19 @@ export const routes = [
 		path:'/room/:roomid/edit',
 		component: RoomEdit
 	},
+	//bank balance
+	{
+		path:'/bankbalance',
+		component: BankBalance
+	},
+	{
+		path:'/bankbalance/create',
+		component: BankBalanceNew
+	},
+	{
+		path:'/bankbalance/:bankbalanceid/edit',
+		component: BankBalanceEdit
+	},
 
 	// change password
 	{ 
@@ -609,6 +629,12 @@ export const routes = [
 		component: ExpenseReport,
 		meta: { bodyClass: 'sidebar-collapse' }
 	},
+	{
+		path:'/report/bankbalance',
+		component: BankBalanceReport,
+		meta: { bodyClass: 'sidebar-collapse' }
+	},
+
 
 	// overall report
 	{
