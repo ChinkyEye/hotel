@@ -17,6 +17,7 @@ class CheckIn extends Model
         'date_np',
         'time',
         'is_check_out',
+        'days_stay',
     ];
 
     public function getUser()
