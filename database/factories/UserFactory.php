@@ -47,7 +47,7 @@ $factory->define(Room::class, function (Faker $faker) {
     return [
         'room_type' => 'none',
         'slug' => 'none',
-        'room_no' => 'A',
+        'room_no' => 'none',
         'no_of_bed' => '0',
         'price' => '0',
         'is_available' => '0',

@@ -26,10 +26,10 @@ class CreateOrderDetailsTable extends Migration
             $table->foreign('customer_id')->references('id')->on('users');
             $table->unsignedBigInteger('usertype_id')->unsigned();
             $table->foreign('usertype_id')->references('id')->on('usertypes');
-            $table->unsignedBigInteger('table_id')->unsigned();
+            $table->unsignedBigInteger('table_id')->nullable()->unsigned();
             $table->foreign('table_id')->references('id')->on('tables'); 
             $table->integer('restaurant_hotel_type')->default(0); // 0 for restaurant 1 for hotel
-            $table->unsignedBigInteger('room_id')->unsigned();
+            $table->unsignedBigInteger('room_id')->nullable()->unsigned();
             $table->foreign('room_id')->references('id')->on('rooms');
             $table->integer('is_active')->default(1);
             $table->integer('is_confirmed')->default(0); // 0 order succes, 1 confirm, 2 processing, 3 deliver

@@ -19,7 +19,7 @@ class CreateCheckInsTable extends Migration
             $table->foreign('user_id')->references('id')->on('users');
             $table->string('check_in_date',10);
             $table->string('check_out_date',10);
-            $table->int('days_stay')->nullable();
+            $table->integer('days_stay')->nullable();
             $table->string('document_type')->nullable();
             $table->string('image')->nullable();
             $table->string('image_enc')->nullable();

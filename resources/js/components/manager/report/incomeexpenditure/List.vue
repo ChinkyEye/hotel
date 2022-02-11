@@ -74,6 +74,11 @@
                             <td>Hotel Room Charges Income</td>
                             <td>{{ totalOrders(money) }}</td>
                           </tr>
+                           <tr>
+                            <td><span class="text-info">Total:</span></td>
+                            <td v-if="money">{{total1 + totalOrders(money) }}</td>
+                            <td v-else>{{total1}}</td>
+                          </tr>
                         </tbody>
                         <tfoot>
                           <tr>
@@ -100,6 +105,11 @@
                           <tr>
                             <td>Purchase Expenses + other expenses</td>
                             <td>{{purchase_expense}}</td>
+                          </tr>
+                          <tr>
+                            <td><span class="text-info">Total:</span></td>
+                            <td v-if="money">{{total2 + totalOrders(money)}}</td>
+                            <td v-else>{{total2}}</td>
                           </tr>
                           <tr>
                             <td><span class="">Cash Balance:</span></td>
@@ -164,6 +174,7 @@
           hotel_sales:'',
           restaurant_sales:'',
           total1:'',
+          total2:'',
           grandtotal2:'',
           money:'',
 
@@ -218,6 +229,7 @@
           // this.cash_balance = (this.income + this.hotel_sales + this.restaurant_sales) - (this.bank_balance + this.purchase_expense);
           this.cash_balance = (this.income + this.hotel_sales + this.restaurant_sales) - (this.bank_balance + this.purchase_expense);
           this.total1 = this.income + this.hotel_sales + this.restaurant_sales;
+          this.total2 = this.bank_balance + this.purchase_expense;
           this.grandtotal2 = this.bank_balance + this.purchase_expense + (this.cash_balance);
       })
     },
