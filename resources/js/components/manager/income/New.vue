@@ -119,7 +119,7 @@
                 topic_id:'',
                 description:'',
                 amount:'',
-                date:'',
+                date:moment(new Date()).format('YYYY-MM-DD'),
             }),
               state: {
                 isSending: false
@@ -141,6 +141,7 @@
     methods:{
          addNewIncome(){
           this.state.isSending = true;
+          this.form.date = moment(this.form.date).format('YYYY-MM-DD');
           this.form.post('/manager/income')
           .then((response)=>{
             this.$router.push('/income')
