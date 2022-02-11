@@ -113,8 +113,9 @@
                           </tr>
                           <tr>
                             <td><span class="">Cash Balance:</span></td>
-                            <td v-if="money">{{cash_balance + totalOrders(money)}}</td>
-                            <td v-else>{{cash_balance}}</td>
+                            <td>{{cash_balance}}</td>
+                            <!-- <td v-if="money">{{cash_balance + totalOrders(money)}}</td> -->
+                            <!-- <td v-else>{{cash_balance}}</td> -->
                           </tr>
                         </tbody>
                         <tfoot>
