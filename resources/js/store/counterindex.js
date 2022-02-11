@@ -46,6 +46,7 @@ export default{
 		customerSelect:[],
 		roomSelect:[],
 		customerorderdetail:[],
+		roompick:[],
 	},
 	getters:{
 		getDashboard(state){
@@ -185,6 +186,9 @@ export default{
 		},
 		getRoomSelect(state){
 			return state.roomSelect
+		},
+		getRoomPick(state){
+			return state.roomPick
 		}
 	},
 	actions:{
@@ -482,6 +486,13 @@ export default{
 					// console.log(response);
 					context.commit('roomSelects', response.data.roomSelects)
 				})
+		},
+		allRoomPick(context, params){
+			axios.get("/counter/roomPick")
+				.then((response)=>{
+					// console.log(response);
+					context.commit('roomPicks', response.data.roomPicks)
+				})
 		}
 	},
 	mutations:{
@@ -622,6 +633,9 @@ export default{
 		},
 		roomSelects(state, data){
 			return state.roomSelect = data
+		},
+		roomPicks(state, data){
+			return state.roomPick = data
 		}
 	}
 }

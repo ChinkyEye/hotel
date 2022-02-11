@@ -84,6 +84,14 @@
             </router-link>
           </li>
           <li class="nav-item">
+            <router-link to="/report/incomeexpenditure" class="nav-link">
+              <i class="nav-icon fas fa-copy"></i>
+              <span>
+                Income Expenditure Report
+              </span>
+            </router-link>
+          </li>
+          <li class="nav-item">
             <router-link to="/change-password" class="nav-link">
               <i class="nav-icon fas fa-copy"></i>
               <span>

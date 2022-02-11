@@ -4,6 +4,8 @@
 
 use App\User;
 use App\Usertype;
+use App\Room;
+use App\Table;
 use Faker\Generator as Faker;
 use Illuminate\Support\Str;
 
@@ -37,6 +39,36 @@ $factory->define(User::class, function (Faker $faker) {
         'user_type_id' => '1',
         'is_active' => '1',
         // 'created_by' => '1',
+        'created_at' => date('Y-m-d H:i:s'),
+    ];
+});
+
+$factory->define(Room::class, function (Faker $faker) {
+    return [
+        'room_type' => 'none',
+        'slug' => 'none',
+        'room_no' => 'A',
+        'no_of_bed' => '0',
+        'price' => '0',
+        'is_available' => '0',
+        'is_active' => '1',
+        'date_np' => date('Y-m-d'),
+        'date' => date('Y-m-d'),
+        'time' => date('H:i:s'),
+        'created_by' => '1',
+        'created_at' => date('Y-m-d H:i:s'),
+    ];
+});
+
+$factory->define(Table::class, function (Faker $faker) {
+    return [
+        'name' => 'none',
+        'slug' => 'none',
+        'is_active' => '1',
+        'date' => date('Y-m-d'),
+        'date_np' => date('Y-m-d'),
+        'time' => date('H:i:s'),
+        'created_by' => '1',
         'created_at' => date('Y-m-d H:i:s'),
     ];
 });

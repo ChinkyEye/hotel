@@ -43,6 +43,12 @@
                       <has-error :form="form" field="user_id"></has-error>
                     </div>
                     <div class="form-group">
+                      <input type="radio" id="zero" value="0" v-model="form.restaurant_hotel_type">
+                      <label for="zero">Restaurent</label>
+                      <input type="radio" id="one" value="1" v-model="form.restaurant_hotel_type">
+                      <label for="one">Hotel</label>
+                    </div>
+                    <div class="form-group">
                       <div class="checkbox" v-for="(pack,index) in getSpecialPackage" :key="pack.id">
                       <label>
                         {{pack.get_user_package.name}}({{pack.get_user_package.days}})
@@ -57,12 +63,20 @@
                       <!-- <label for="package">Package Name</label><span id="rem"></span>
                       <input type="text" class="form-control" id="package" placeholder="Package Name" v-model="getSpecialPackage" name="package" disabled> -->
                     </div>
-                    <div class="form-group">
+                    <div class="form-group" v-if="this.form.restaurant_hotel_type == '0'">
                       <label for="table_id">Table <span class="text-danger">*</span></label>
                       <select class="form-control" id="table_id" v-model="form.table_id" name="table_id" :class="{ 'is-invalid': form.errors.has('table_id') }"> 
                         <option :value="table.id" v-for="table in getAllTableSelect">{{table.name}}</option>
                       </select>
                       <has-error :form="form" field="table_id"></has-error>
+                    </div>
+                    <div class="form-group" v-if="this.form.restaurant_hotel_type == '1'">
+                      <label for="table_id">Room <span class="text-danger">*</span></label>
+                      <select class="form-control" id="room_id" v-model="form.room_id" name="room_id" :class="{ 'is-invalid': form.errors.has('room_id') }"> 
+                       <!-- <option disabled value="">Select one</option> -->
+                        <option :value="room.id" v-for="room in getAllRoom">{{room.room_type}}</option>
+                      </select>
+                      <has-error :form="form" field="room_id"></has-error>
                     </div>
                     <div class="form-group">
                       <label for="item_id">Menu Item <span class="text-danger">*</span></label>
@@ -199,6 +213,8 @@
                 table_id:1,
                 user_id:'',
                 item_id:'',
+                restaurant_hotel_type:'0',
+                room_id:1,
             }),
           name:'',
           check_in_date:'',
@@ -258,6 +274,10 @@
           this.$Progress.finish()
           return this.$store.getters.getTableSelect
       },
+      getAllRoom(){
+        return this.$store.getters.getRoomPick
+        // return this.$store.getters.getRoomSelect
+      },
       getSpecialPackage(){
         this.$Progress.finish()
           var cpackage = this.$store.getters.getSpecialUserPackageSelect;
@@ -291,7 +311,7 @@
                   icon: 'success',
                   title: 'Order append successfully'
               });
-              console.log(response.data.datas);
+              // console.log(response.data.datas);
               if(response.data.datas){
                 this.name = response.data.datas.get_user.name;
                 this.check_in_date = response.data.datas.check_in_date;
@@ -353,6 +373,8 @@
               user_id:this.form.user_id,
               table_id:this.form.table_id,
               user_t_id:this.form.user_t_id,
+              room_id:this.form.room_id,
+              restaurant_hotel_type:this.form.restaurant_hotel_type,
               // type_id:this.type_id
           })
           .then((response)=>{
@@ -372,6 +394,8 @@
         // this.$store.dispatch("allUserSelect")
         this.$store.dispatch("allItemSelect")
         this.$store.dispatch("allTableSelect")
+        this.$store.dispatch("allRoomSelect")
+        this.$store.dispatch("allRoomPick")
       },
       deleteItem(id){
         var that = this;

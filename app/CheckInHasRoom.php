@@ -19,5 +19,8 @@ class CheckInHasRoom extends Model
     public  function getRoom(){
         return $this->belongsTo(Room::class,'room_id');
     }
+    public  function getCheckIn(){
+        return $this->belongsTo(CheckIn::class,'checkin_id');
+    }
 
 }

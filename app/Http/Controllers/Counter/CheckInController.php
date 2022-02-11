@@ -240,7 +240,6 @@ class CheckInController extends Controller
 
     public function savedetail(Request $request)
     {
-        // dd($request);
         $current_date = date("Y-m-d");
         $current_time = date("H:i:s");
         $auth = Auth::user()->id;
@@ -258,6 +257,7 @@ class CheckInController extends Controller
             $order_total->grand_total = '0';
             $order_total->customer_id = $request->id;
             $order_total->table_id = '1';
+            $order_total->room_id = '1';
             $order_total->usertype_id = $user_t_id;
             $order_total->date = $current_date;
             $order_total->date_np = $this->helper->date_np_con_parm($current_date);
@@ -272,6 +272,10 @@ class CheckInController extends Controller
         }
         
         $checkins = CheckIn::findOrFail($checkin_id);
+        $check_in_date = $checkins->check_in_date;
+        $check_out_date = $checkins->check_out_date;
+        $days_stay   = Carbon::parse($check_in_date)->diffInDays(Carbon::parse($check_out_date));
+        $checkins->days_stay = $days_stay;
         $checkins->is_check_out = '1';
         $checkins->update();
 

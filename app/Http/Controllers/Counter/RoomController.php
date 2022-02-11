@@ -29,6 +29,16 @@ class RoomController extends Controller
         return response()->json([
             'roomSelects'=>$roomSelects
         ],200);
+    } 
+
+    public function all_room_pick()
+    {
+        $roomPicks = Room::orderBy('id','DESC')
+                                ->where('is_active','1')
+                                ->get();
+        return response()->json([
+            'roomPicks'=>$roomPicks
+        ],200);
     }
 
     /**

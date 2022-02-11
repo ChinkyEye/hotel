@@ -103,7 +103,7 @@
 		},
 		methods:{
       fetchPosts() {
-        this.$store.dispatch("allUnit",[this.pagination.current_page,0]);
+        this.$store.dispatch("allUnit",[this.pagination.current_page,this.search]);
       },
       deleteUnit(id){
         var that = this;

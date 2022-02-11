@@ -96,6 +96,8 @@ class OrderController extends Controller
         $order_total->is_active = '1';
         $order_total->is_confirmed = '0';
         $order_total->bill_type = '0';
+        $order_total->room_id = $request->room_id;
+        $order_total->restaurant_hotel_type = $request->restaurant_hotel_type;
         $order_total->created_by = $auth;
         $order_total->billed_by = Auth::user()->id;
         $order_total->save();
@@ -104,13 +106,13 @@ class OrderController extends Controller
       
 
 
-    $product = '1';
-if(in_array('2', $menuitem)){
-    event(new KitchenPost($product));
-}
-if(in_array('3', $menuitem)){
-    event(new BarPost($product));
-}
+        $product = '1';
+        if(in_array('2', $menuitem)){
+            event(new KitchenPost($product));
+        }
+        if(in_array('3', $menuitem)){
+            event(new BarPost($product));
+        }
 
         return response()->json([
             'message'=>'ok',

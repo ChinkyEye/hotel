@@ -441,6 +441,7 @@ Route::group(["middleware" => 'manager'], function(){
 	Route::resource('/manager/report/daybook','Manager\Report\DaybookController');
 
 	Route::get('/manager/report/bankbalance','Manager\Report\BankBalanceReportController@index');
+	Route::get('/manager/report/totalbankbalance/{date1}/{date2}','Manager\Report\BankBalanceReportController@totalbankbalance');
 	Route::get('/manager/report/bankbalance/export','Manager\Report\BankBalanceReportController@fileExport');
 
 	Route::get('/manager/report/items/export','Manager\Report\ItemsController@fileExport');
@@ -563,6 +564,7 @@ Route::group(["middleware" => 'counter'], function(){
 	Route::get('/counter/customerList', 'Counter\CheckInController@all_customer_select');
 
 	Route::get('/counter/roomList','Counter\RoomController@all_room_select');
+	Route::get('/counter/roomPick','Counter\RoomController@all_room_pick');
 
 
 	// change password

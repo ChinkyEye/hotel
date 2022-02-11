@@ -176,6 +176,8 @@ import IncomeReport from './components/manager/report/incomereport/List.vue'
 import ExpenseReport from './components/manager/report/expensereport/List.vue'
 //bankbalnce report
 import BankBalanceReport from './components/manager/report/bankbalance/List.vue'
+//incomeexpenditure
+import IncomeExpenditureReport from './components/manager/report/incomeexpenditure/List.vue'
 // overall detail
 import Overall from './components/manager/report/overall/List.vue'
 
@@ -633,6 +635,11 @@ export const routes = [
 		path:'/report/bankbalance',
 		component: BankBalanceReport,
 		meta: { bodyClass: 'sidebar-collapse' }
+	},
+	{
+		path:'/report/incomeexpenditure',
+		component: IncomeExpenditureReport,
+		meta: { bodyClass: 'sidebar-collapse' },
 	},
 
 
